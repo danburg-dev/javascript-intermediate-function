@@ -4,6 +4,21 @@
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
+function endGrades() {
+
+    let outCome = 0
+    for (let i = 0; i < grades.length; i++) {
+        console.log('Het behaalde cijfer is ' + grades[i]);
+    if (grades[i] >= 8)
+        console.log('                       ^^ Deze is geslaagd met Cum Laude!!!');
+        outCome = outCome + 1
+    }
+
+    console.log(outCome + ' studenten hebben deelgenomen');
+    console.log('Hiervan zijn ' + outCome +' studenten geslaagd met Cum laude' );
+}
+endGrades()
+
 /* Opdracht  1: Cum Laude */
 
 /* 1a: Script schrijven  */
