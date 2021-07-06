@@ -1,6 +1,9 @@
 // Je gaat functies schrijven die we kunnen hergebruiken om sommige emailadressen te checken. Nu zul je gaan merken hoe handig functies kunnen zijn!
 // Je zult hier methoden van het String Object voor nodig hebben, dus pak de paragraaf op EdHub over het String Object er even bij.
 
+function getTask(indexNumber) {
+    console.log("----------Opdracht " + indexNumber + "----------");
+}
 
 /* Opdracht  1 */
 // Schrijf een functie genaamd getEmailDomain, die een emailadres verwacht en de domeinnaam teruggeeft. Een domeinnaam is hetgeen dat na het @ in het adres staat
@@ -8,10 +11,6 @@
 // getEmailDomain("n.eeken@novi-education.nl") geeft novi-education.nl
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
-
-function getTask(indexNumber) {
-    console.log("----------Opdracht " + indexNumber + "----------");
-}
 
 getTask(1)
 
@@ -77,7 +76,6 @@ function checkEmailValidity(inputMail) {
         console.log("Het mailadres: " + inputMail + " bevat een punt: " + checkComma);
     }
     if (checkDot = inputMail.endsWith(".")); {
-
         console.log("Het mailadres: " + inputMail + " heeft als laatste karakter een punt: " + checkDot);
     }
 }
