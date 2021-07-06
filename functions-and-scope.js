@@ -2,21 +2,32 @@
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
+
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 function endGrades() {
 
     let outCome = 0
     for (let i = 0; i < grades.length; i++) {
-        console.log('Het behaalde cijfer is ' + grades[i]);
-    if (grades[i] >= 8)
-        console.log('                       ^^ Deze is geslaagd met Cum Laude!!!');
-        outCome = outCome + 1
-    }
+        // console.log('Het behaalde cijfer is ' + grades[i]);
+        console.log(`Student met indexnummer ${i} heeft het behaalde cijfer ${grades[i]} gekregen`);
 
-    console.log(outCome + ' studenten hebben deelgenomen');
-    console.log('Hiervan zijn ' + outCome +' studenten geslaagd met Cum laude' );
+        if (grades[i] >= 8)
+            console.log('(is Cum Laude geslaagd!)');
+
+        if (grades[i] < 6)
+            console.log('(heeft een onvoldoende)');
+
+        if (grades[i] >= 6 && grades[i] < 8)
+            console.log('(heeft een voldoende)');
+
+        outCome = outCome + 1;
+        cumLaude = grades[i] >= 8; // 6 kleiner 8 = false -> hier gaat iets fout!
+    }
+    console.log(outCome + ' studenten hebben deelgenomen. ');
+    console.log('Hiervan zijn ' + cumLaude + ' studenten Cum Laude geslaagd.' );
 }
+
 endGrades()
 
 /* Opdracht  1: Cum Laude */
