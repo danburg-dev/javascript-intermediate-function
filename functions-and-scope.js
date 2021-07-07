@@ -1,8 +1,35 @@
+function getTask(indexNumber) {
+    console.log("----------Opdracht " + indexNumber + "----------");
+}
+
 // Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken. Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
+getTask(0);
+
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+
+function endGrades(array) {
+
+    let outCome = 0
+    for (let i = 0; i < array.length; i++) {
+        console.log(`Student met nr. ${i} heeft het cijfer ${array[i]} gekregen`);
+
+        if (array[i] >= 8)
+            console.log('(is Cum Laude geslaagd!)');
+
+        if (array[i] < 6)
+            console.log('(heeft een onvoldoende)');
+
+        if (array[i] >= 6 && grades[i] < 8)
+            console.log('(heeft een voldoende)');
+
+        outCome = outCome + 1;
+    }
+    console.log(outCome + ' studenten hebben deelgenomen. ');
+}
+endGrades(grades)
 
 /* Opdracht  1: Cum Laude */
 
@@ -13,6 +40,21 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat?
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
+
+getTask(1)
+
+function cumLaude(array) {
+    let cumLauder = 0;
+
+    for (i = 0; i < array.length; i++) {
+        if (array[i] >= 8) {
+            cumLauder = cumLauder + 1
+        }
+    }
+    console.log('Hiervan zijn ' + cumLauder + ' studenten Cum Laude geslaagd.');
+}
+
+cumLaude(grades);
 
 // ---- Verwachte uitkomst: 6
 
@@ -27,9 +69,6 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-
-
-
 /* Opdracht  2: Gemiddeld cijfer */
 
 /* 2a: Script schrijven  */
@@ -42,7 +81,6 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
-
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -53,13 +91,27 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+getTask(2)
+function averageGrade(array) {
+    const sum = array.reduce((a, b) => a + b, 0);
+    const average = (sum / array.length) || 0;
+    console.log("Het gemiddelde cijfer is: " + average);
+}
+
+averageGrade(grades);
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
+function roundUp(array)  {
+    const sum = array.reduce((a, b) => a + b, 0);
+    const average = (sum / array.length) || 0;
+    console.log("Het hele afgeronde cijfer is dan: " + Math.round(average));
+    console.log("Op 2 decimalen is het dan: " + Math.round (average *100) / 100);
+}
 
-
+roundUp(grades);
 
 /* Bonusopdracht: hoogste cijfer */
 
@@ -82,3 +134,21 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+getTask(3)
+function highestGrade(array) {
+    const highestNumberFromArray = function (grades) {
+        let highestNumberFromArray = 0;
+        let i = 0;
+        while (i < grades.length) {
+            if (grades[i] > highestNumberFromArray) {
+                highestNumberFromArray = grades[i];
+            }
+            ;
+            ++i;
+        }
+        return highestNumberFromArray;
+    }
+    console.log("Het hoogst behaalde cijfer is een: "+ highestNumberFromArray(grades));
+}
+highestGrade(grades);
