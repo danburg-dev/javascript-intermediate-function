@@ -10,27 +10,26 @@ getTask(0);
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
-function endGrades() {
+function endGrades(array) {
 
     let outCome = 0
-    for (let i = 0; i < grades.length; i++) {
-        console.log(`Student met nr. ${i} heeft het cijfer ${grades[i]} gekregen`);
+    for (let i = 0; i < array.length; i++) {
+        console.log(`Student met nr. ${i} heeft het cijfer ${array[i]} gekregen`);
 
-        if (grades[i] >= 8)
+        if (array[i] >= 8)
             console.log('(is Cum Laude geslaagd!)');
 
-        if (grades[i] < 6)
+        if (array[i] < 6)
             console.log('(heeft een onvoldoende)');
 
-        if (grades[i] >= 6 && grades[i] < 8)
+        if (array[i] >= 6 && grades[i] < 8)
             console.log('(heeft een voldoende)');
 
         outCome = outCome + 1;
-        cumLaude = grades[i] >= 8; // 6 kleiner 8 = false -> hier gaat iets fout!
     }
     console.log(outCome + ' studenten hebben deelgenomen. ');
 }
-endGrades()
+endGrades(grades)
 
 /* Opdracht  1: Cum Laude */
 
@@ -44,7 +43,18 @@ endGrades()
 
 getTask(1)
 
-console.log('Hiervan zijn ' + cumLaude + ' studenten Cum Laude geslaagd.' );
+function cumLaude(array) {
+    let cumLauder = 0;
+
+    for (i = 0; i < array.length; i++) {
+        if (array[i] >= 8) {
+            cumLauder = cumLauder + 1
+        }
+    }
+    console.log('Hiervan zijn ' + cumLauder + ' studenten Cum Laude geslaagd.');
+}
+
+cumLaude(grades);
 
 // ---- Verwachte uitkomst: 6
 
@@ -82,9 +92,9 @@ console.log('Hiervan zijn ' + cumLaude + ' studenten Cum Laude geslaagd.' );
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
 getTask(2)
-function averageGrade() {
-    const sum = grades.reduce((a, b) => a + b, 0);
-    const average = (sum / grades.length) || 0;
+function averageGrade(array) {
+    const sum = array.reduce((a, b) => a + b, 0);
+    const average = (sum / array.length) || 0;
     console.log("Het gemiddelde cijfer is: " + average);
 }
 
@@ -94,14 +104,14 @@ averageGrade(grades);
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-function roundUp()  {
-    const sum = grades.reduce((a, b) => a + b, 0);
-    const average = (sum / grades.length) || 0;
+function roundUp(array)  {
+    const sum = array.reduce((a, b) => a + b, 0);
+    const average = (sum / array.length) || 0;
     console.log("Het hele afgeronde cijfer is dan: " + Math.round(average));
     console.log("Op 2 decimalen is het dan: " + Math.round (average *100) / 100);
 }
 
-roundUp();
+roundUp(grades);
 
 /* Bonusopdracht: hoogste cijfer */
 
@@ -126,19 +136,19 @@ roundUp();
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
 
 getTask(3)
-function highestGrade() {
-    const grootsteUitArray = function (grades) {
-        let grootsteGetal = 0;
+function highestGrade(array) {
+    const highestNumberFromArray = function (grades) {
+        let highestNumberFromArray = 0;
         let i = 0;
         while (i < grades.length) {
-            if (grades[i] > grootsteGetal) {
-                grootsteGetal = grades[i];
+            if (grades[i] > highestNumberFromArray) {
+                highestNumberFromArray = grades[i];
             }
             ;
             ++i;
         }
-        return grootsteGetal;
+        return highestNumberFromArray;
     }
-    console.log("Het hoogst behaalde cijfer is een: "+ grootsteUitArray(grades));
+    console.log("Het hoogst behaalde cijfer is een: "+ highestNumberFromArray(grades));
 }
-highestGrade();
+highestGrade(grades);
